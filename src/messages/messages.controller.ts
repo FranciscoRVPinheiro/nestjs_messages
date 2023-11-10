@@ -27,4 +27,9 @@ export class MessagesController {
         return this.messageService.findOne(id)
     }
 
+    @Get('author/:author')
+    getAuthor(@Param('author') author:string) {
+        return this.messageService.findByAuthor(author)
+    }
+
 }

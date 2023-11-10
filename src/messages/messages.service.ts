@@ -20,4 +20,8 @@ export class MessagesService {
     create(author: string, quote: string) {
         return this.messagesRepo.create(author, quote)
     }
+
+    findByAuthor(author: string) {
+        return this.messagesRepo.findByAuthor(author)
+    }
 }
