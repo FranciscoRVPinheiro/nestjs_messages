@@ -1,7 +1,6 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Quotes } from "./quotes.model"
 import { CreateQuoteDto } from "./dtos/create-quote.dto"
 
 @Injectable()
@@ -30,6 +29,11 @@ export class QuotesService {
     async findAll(){
         const allQuotes = await this.quoteModel.find().exec();
         return allQuotes
+    }
+
+    async findAndUpdate(id:string, doc: CreateQuoteDto) {
+        const updatedQuote = await this.quoteModel.findByIdAndUpdate(id, doc).exec();
+        return updatedQuote
     }
 
 }

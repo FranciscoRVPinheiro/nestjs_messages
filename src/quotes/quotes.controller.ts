@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Delete, NotFoundException } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, NotFoundException, Query, Put } from '@nestjs/common';
 import { CreateQuoteDto } from "./dtos/create-quote.dto"
 import { QuotesService } from './quotes.service'
 
@@ -21,7 +21,7 @@ export class QuotesController {
         return createQuote
     }
 
-    @Get('/:id')
+    @Get(':id')
     async getQuoteByID(@Param('id') id:string){
         const getQuote = await this.service.findOne(id)
         return getQuote
@@ -33,7 +33,11 @@ export class QuotesController {
         return deleteQuote
     }
 
+    @Put('update/:id')
+    async findAndUpdate(@Param('id') id:string, @Body() body:CreateQuoteDto){
+        const patchedQuote = await this.service.findAndUpdate(id, body)
+        const getPatchedQuote = await this.service.findOne(id)
+        return getPatchedQuote
+    }
     //TODO: add search by keyword
-    //TODO: add PUT method
-
 }
