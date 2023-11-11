@@ -1,38 +1,40 @@
-import { Controller, Get, Post, Body, Param, Query } from '@nestjs/common';
-import { CreateMessageDto } from './dtos/create-quote.dto';
+import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
 import { QuotesService } from './quotes.service'
+import { Quotes } from './quotes.model'
 
 @Controller('quotes')
 export class QuotesController {
 
-    messageService: QuotesService;
-
-    constructor() {
-        // DONT DO IT IN REAL APPS. Use dependency injection.
-        this.messageService = new QuotesService()
-    }
+    constructor(
+        private service: QuotesService
+    ) {}
 
     @Get()
-    lisMessages(){
-        return this.messageService.findAll()
+    lisQuotes(){
+        return this.service.findAll()
     }
 
     @Post()
-    createMessages(@Body() body:CreateMessageDto){
-        return this.messageService.create(body.author, body.quote)
+    createQuote(@Body() body:Quotes){
+        return this.service.create(body)
     }
 
     @Get('/:id')
-    getMessage(@Param('id') id:string){
-        return this.messageService.findOne(id)
+    getQuoteByID(@Param('id') id:string){
+        return this.service.findOne(id)
     }
 
-    @Get('author/:author')
-    getAuthor(@Param('author') author:string) {
-        return this.messageService.findByAuthor(author)
+    @Delete('delete/:id')
+    deleteQuote(@Param('id') id:string){
+        return this.service.delete(id)
     }
+
+    // @Get('author/:author')
+    // getAuthor(@Param('author') author:string) {
+    //     return this.service.findByAuthor(author)
+    // }
 
     //TODO: add search by keyword
-    //TODO: add PUT and DELETE methods
+    //TODO: add PUT method
 
 }

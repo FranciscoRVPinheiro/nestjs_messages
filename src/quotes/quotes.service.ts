@@ -1,27 +1,33 @@
-import { QuotesRepository} from "./quotes.repository"
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Quotes } from "./quotes.model"
 
+@Injectable()
 export class QuotesService {
-    messagesRepo: QuotesRepository
+    
+    constructor(
+        @InjectModel('Quotes') private readonly quoteModel: Model<Quotes>,
+    ) {}
 
-    constructor() {
-        // DONT DO IT IN REAL APPS
-        this.messagesRepo = new QuotesRepository()
+    async create(doc: Quotes) {
+        const quote = await new this.quoteModel(doc).save();
+        return quote.id;
+      }
+
+    async delete(id: string) {
+        const quote = await this.quoteModel.deleteOne({ _id: id }).exec();
+        if (quote.deletedCount === 0) {
+          throw new NotFoundException(`Quote with ID ${id} not found`);
+      }
     }
 
-    findOne(id: string) {
-        return this.messagesRepo.findOne(id)
-    }  
-
-    findAll() {
-        return this.messagesRepo.findAll()
-
+    async findOne(id: string) {
+        return await this.quoteModel.findById(id).exec();
     }
 
-    create(author: string, quote: string) {
-        return this.messagesRepo.create(author, quote)
+    async findAll(){
+        return await this.quoteModel.find().exec();
     }
 
-    findByAuthor(author: string) {
-        return this.messagesRepo.findByAuthor(author)
-    }
 }
