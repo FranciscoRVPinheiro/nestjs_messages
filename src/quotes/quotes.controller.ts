@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
+import { CreateQuoteDto } from "./dtos/create-quote.dto"
 import { QuotesService } from './quotes.service'
-import { Quotes } from './quotes.model'
 
 @Controller('quotes')
 export class QuotesController {
@@ -15,7 +15,7 @@ export class QuotesController {
     }
 
     @Post()
-    createQuote(@Body() body:Quotes){
+    createQuote(@Body() body:CreateQuoteDto){
         return this.service.create(body)
     }
 

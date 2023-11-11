@@ -1,11 +1,15 @@
 import { IsString, IsNotEmptyObject, IsNotEmpty } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateMessageDto {
+
+export class CreateQuoteDto {
     @IsString()
     @IsNotEmpty()
+    @ApiProperty()
     author: string;
 
     @IsString()
-    @IsNotEmpty()  
+    @IsNotEmpty()
+    @ApiProperty()  
     quote: string;
 }

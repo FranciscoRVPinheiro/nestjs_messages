@@ -2,15 +2,17 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Quotes } from "./quotes.model"
+import { CreateQuoteDto } from "./dtos/create-quote.dto"
 
 @Injectable()
 export class QuotesService {
     
     constructor(
-        @InjectModel('Quotes') private readonly quoteModel: Model<Quotes>,
+        // @InjectModel('Quotes') private readonly quoteModel: Model<Quotes>,
+        @InjectModel('Quotes') private readonly quoteModel: Model<CreateQuoteDto>,
     ) {}
 
-    async create(doc: Quotes) {
+    async create(doc: CreateQuoteDto) {
         const quote = await new this.quoteModel(doc).save();
         return quote.id;
       }
