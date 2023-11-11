@@ -1,7 +1,11 @@
-import { IsString } from 'class-validator';
+import { IsString, IsNotEmptyObject, IsNotEmpty } from 'class-validator';
 
 export class CreateMessageDto {
     @IsString()
-    author: string
-    quote: string
+    @IsNotEmpty()
+    author: string;
+
+    @IsString()
+    @IsNotEmpty()  
+    quote: string;
 }

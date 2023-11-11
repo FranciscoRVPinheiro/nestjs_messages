@@ -1,14 +1,14 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Query } from '@nestjs/common';
 import { CreateMessageDto } from './dtos/create-message.dto';
 import { MessagesService } from './messages.service'
 
-@Controller('messages')
+@Controller('quotes')
 export class MessagesController {
 
     messageService: MessagesService;
 
     constructor() {
-        // DONT DO IT IN REAL APPS. Use dependency inbjection.
+        // DONT DO IT IN REAL APPS. Use dependency innjection.
         this.messageService = new MessagesService()
     }
 
@@ -31,5 +31,8 @@ export class MessagesController {
     getAuthor(@Param('author') author:string) {
         return this.messageService.findByAuthor(author)
     }
+
+    //TODO: add search by keyword
+    //TODO: add PUT and DELETE methods
 
 }
