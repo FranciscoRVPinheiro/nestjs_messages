@@ -14,22 +14,22 @@ export class QuotesService {
 
     async create(doc: CreateQuoteDto) {
         const quote = await new this.quoteModel(doc).save();
-        return quote.id;
-      }
+        return quote
+    }
 
     async delete(id: string) {
         const quote = await this.quoteModel.deleteOne({ _id: id }).exec();
-        if (quote.deletedCount === 0) {
-          throw new NotFoundException(`Quote with ID ${id} not found`);
-      }
+        return quote
     }
 
     async findOne(id: string) {
-        return await this.quoteModel.findById(id).exec();
+        const quote = await this.quoteModel.findById(id).exec();
+        return quote
     }
 
     async findAll(){
-        return await this.quoteModel.find().exec();
+        const allQuotes = await this.quoteModel.find().exec();
+        return allQuotes
     }
 
 }

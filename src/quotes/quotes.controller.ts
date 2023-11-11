@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, NotFoundException } from '@nestjs/common';
 import { CreateQuoteDto } from "./dtos/create-quote.dto"
 import { QuotesService } from './quotes.service'
 
@@ -10,29 +10,28 @@ export class QuotesController {
     ) {}
 
     @Get()
-    lisQuotes(){
-        return this.service.findAll()
+    async lisQuotes(){
+        const quoteList = await this.service.findAll() 
+        return quoteList
     }
 
     @Post()
-    createQuote(@Body() body:CreateQuoteDto){
-        return this.service.create(body)
+    async createQuote(@Body() body:CreateQuoteDto){
+        const createQuote = await this.service.create(body)
+        return createQuote
     }
 
     @Get('/:id')
-    getQuoteByID(@Param('id') id:string){
-        return this.service.findOne(id)
+    async getQuoteByID(@Param('id') id:string){
+        const getQuote = await this.service.findOne(id)
+        return getQuote
     }
 
     @Delete('delete/:id')
-    deleteQuote(@Param('id') id:string){
-        return this.service.delete(id)
+    async deleteQuote(@Param('id') id:string){
+        const deleteQuote = await this.service.delete(id)
+        return deleteQuote
     }
-
-    // @Get('author/:author')
-    // getAuthor(@Param('author') author:string) {
-    //     return this.service.findByAuthor(author)
-    // }
 
     //TODO: add search by keyword
     //TODO: add PUT method
