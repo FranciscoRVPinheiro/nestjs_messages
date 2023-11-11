@@ -1,6 +1,6 @@
 import { readFile, writeFile } from "fs/promises";
 
-export class MessagesRepository {
+export class QuotesRepository {
     file: string;
     
     constructor() {
@@ -9,20 +9,20 @@ export class MessagesRepository {
 
     async findOne(id: string) {
         const contents = await readFile(this.file, 'utf8');
-        const messages = JSON.parse(contents)
+        const quotes = JSON.parse(contents)
 
-        return messages[id]
+        return quotes[id]
     }
 
     async findByAuthor(author: string) {
         const contents = await readFile(this.file, 'utf8')
-        const messages = JSON.parse(contents)
+        const quotes = JSON.parse(contents)
 
         let authorArray = []
 
-        for ( let key in messages) {
-            if (messages[key].author.toLowerCase() === author.toLowerCase()) {
-                authorArray.push(messages[key])
+        for ( let key in quotes) {
+            if (quotes[key].author.toLowerCase() === author.toLowerCase()) {
+                authorArray.push(quotes[key])
             }
         }
 
@@ -31,20 +31,20 @@ export class MessagesRepository {
 
     async findAll() {
         const contents = await readFile(this.file, 'utf8')
-        const messages = JSON.parse(contents)
+        const quotes = JSON.parse(contents)
 
-        return messages
+        return quotes
     }
     
     async create(author: string, quote: string) {
         const contents = await readFile(this.file, 'utf8')
-        const messages = JSON.parse(contents)
+        const quotes = JSON.parse(contents)
         
         const id = Math.floor(Math.random() * 53)
         
-        messages[id] = { id, author, quote }
+        quotes[id] = { id, author, quote }
 
-        await writeFile(this.file, JSON.stringify(messages))
+        await writeFile(this.file, JSON.stringify(quotes))
     }
 
 } 

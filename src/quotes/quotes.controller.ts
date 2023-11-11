@@ -1,15 +1,15 @@
 import { Controller, Get, Post, Body, Param, Query } from '@nestjs/common';
-import { CreateMessageDto } from './dtos/create-message.dto';
-import { MessagesService } from './messages.service'
+import { CreateMessageDto } from './dtos/create-quote.dto';
+import { QuotesService } from './quotes.service'
 
 @Controller('quotes')
-export class MessagesController {
+export class QuotesController {
 
-    messageService: MessagesService;
+    messageService: QuotesService;
 
     constructor() {
-        // DONT DO IT IN REAL APPS. Use dependency innjection.
-        this.messageService = new MessagesService()
+        // DONT DO IT IN REAL APPS. Use dependency injection.
+        this.messageService = new QuotesService()
     }
 
     @Get()

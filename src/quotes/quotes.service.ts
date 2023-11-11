@@ -1,11 +1,11 @@
-import { MessagesRepository} from "./messages.repository"
+import { QuotesRepository} from "./quotes.repository"
 
-export class MessagesService {
-    messagesRepo: MessagesRepository
+export class QuotesService {
+    messagesRepo: QuotesRepository
 
     constructor() {
         // DONT DO IT IN REAL APPS
-        this.messagesRepo = new MessagesRepository()
+        this.messagesRepo = new QuotesRepository()
     }
 
     findOne(id: string) {
