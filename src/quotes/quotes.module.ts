@@ -7,8 +7,10 @@ import { QuotesService } from './quotes.service';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env.mongo),
+    ConfigModule.forRoot({
+      isGlobal: true
+    }),
+    MongooseModule.forRoot(process.env.MONGO),
     MongooseModule.forFeature([{
       name: 'Quotes', schema: QuotesSchema,
     }]),
