@@ -7,7 +7,6 @@ import { CreateQuoteDto } from "./dtos/create-quote.dto"
 export class QuotesService {
     
     constructor(
-        // @InjectModel('Quotes') private readonly quoteModel: Model<Quotes>,
         @InjectModel('Quotes') private readonly quoteModel: Model<CreateQuoteDto>,
     ) {}
 
