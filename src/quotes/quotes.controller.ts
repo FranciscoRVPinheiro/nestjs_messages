@@ -40,5 +40,17 @@ export class QuotesController {
         return getPatchedQuote
     }
 
+    @Get('search/:keyword')
+    async searchByKeyword(@Param('keyword') keyword: string) {
+      const results = await this.QuotesService.searchByKeyword(keyword);
+      return results;
+    }
+
+    @Get('author/:author')
+    async searchByAuhtor(@Param('author') author: string) {
+      const results = await this.QuotesService.searchByAuthor(author);
+      return results;
+    }
+
     //TODO: add search by keyword
 }
