@@ -49,7 +49,10 @@ export class QuotesService {
         const quoteSearch = await this.quoteModel
           .find({ quote: { $regex: new RegExp(keyword, 'i') } })
           .exec();
-        
+          
+          if (!quoteSearch[keyword]) {
+            throw new NotFoundException(`Could not find quotes with keyword ${keyword}.`)
+        }
           return quoteSearch
       }
 
@@ -57,6 +60,10 @@ export class QuotesService {
     const authorSearch = await this.quoteModel
         .find({ author: { $regex: new RegExp(author, 'i') } })
         .exec();
+
+        if (!authorSearch[author]) {
+            throw new NotFoundException(`Could not find author ${author}.`)
+        }
 
         return authorSearch
     }
