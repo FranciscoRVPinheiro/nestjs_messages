@@ -8,7 +8,7 @@ async function bootstrap() {
   app.useGlobalPipes(
     new ValidationPipe()
   );
-  
+
   const config = new DocumentBuilder()
   .setTitle('Stoic Quotes API')
   .setDescription('Toy api to understand NestJS.')
@@ -21,6 +21,6 @@ async function bootstrap() {
 
   app.enableCors();
 
-  await app.listen(process.env.PORT);
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
