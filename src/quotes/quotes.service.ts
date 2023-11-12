@@ -44,4 +44,16 @@ export class QuotesService {
         const updatedQuote = await this.quoteModel.findByIdAndUpdate(id, body).exec();
         return updatedQuote
     }
+
+    async searchByKeyword(keyword: string){
+        return this.quoteModel
+          .find({ quote: { $regex: new RegExp(keyword, 'i') } })
+          .exec();
+      }
+
+      async searchByAuthor(author: string){
+        return this.quoteModel
+          .find({ author: { $regex: new RegExp(author, 'i') } })
+          .exec();
+      }
 }
