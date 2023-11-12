@@ -46,14 +46,18 @@ export class QuotesService {
     }
 
     async searchByKeyword(keyword: string){
-        return this.quoteModel
+        const quoteSearch = await this.quoteModel
           .find({ quote: { $regex: new RegExp(keyword, 'i') } })
           .exec();
+        
+          return quoteSearch
       }
 
-      async searchByAuthor(author: string){
-        return this.quoteModel
-          .find({ author: { $regex: new RegExp(author, 'i') } })
-          .exec();
-      }
+    async searchByAuthor(author: string){
+    const authorSearch = await this.quoteModel
+        .find({ author: { $regex: new RegExp(author, 'i') } })
+        .exec();
+
+        return authorSearch
+    }
 }
