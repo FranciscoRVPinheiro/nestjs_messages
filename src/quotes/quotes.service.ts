@@ -18,15 +18,15 @@ export class QuotesService {
     async delete(id: string) {
         const quote = await this.quoteModel.deleteOne({ _id: id }).exec();
 
-        if (!quote){
+        if (quote.deletedCount === 0){
             throw new NotFoundException(`Quote id ${id} not found.`)
         }
-                
+
         return quote
     }
 
     async findOne(id: string) {
-        const quote = await this.quoteModel.findById(id).exec();
+        const quote = await this.quoteModel.findById({_id: id}).exec();
 
         if (!quote){
             throw new NotFoundException(`Quote id ${id} not found.`)
