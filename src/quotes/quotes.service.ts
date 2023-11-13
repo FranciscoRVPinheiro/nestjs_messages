@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateQuoteDto } from "./dtos/create-quote.dto"
+import { audit } from 'rxjs';
 
 @Injectable()
 export class QuotesService {
@@ -26,46 +27,72 @@ export class QuotesService {
     }
 
     async findOne(id: string) {
-        const quote = await this.quoteModel.findById({_id: id}).exec();
+        try {
+            const quote = await this.quoteModel.findById(id).exec();
 
-        if (!quote){
-            throw new NotFoundException(`Quote id ${id} not found.`)
+            if (!quote){
+                throw new NotFoundException(`Quote id ${id} not found`)
+            }
+    
+            return quote
+            
+        }catch (err) {
+            throw new NotFoundException(`Quote id ${id} not found`)
         }
 
-        return quote
     }
 
-    async findAll(){
-        const allQuotes = await this.quoteModel.find().exec();
-        return allQuotes
+    async findAll(quote: string, author: string) {
+
+        if (quote && !author) {
+            const filteredQuotes = await this.quoteModel
+                                .find( { quote: { $regex: new RegExp(quote, 'i') } })
+                                .exec()
+            return filteredQuotes
+
+        }
+        
+        if (author && !quote) {
+            const filteredAuthors = await this.quoteModel
+                                .find( { author: { $regex: new RegExp(author, 'i') } })
+                                .exec()
+                   
+            return filteredAuthors
+
+        } 
+        
+        if (author && quote) {
+            const filteredAuthorsAndQuote = await this.quoteModel.find().exec();
+          
+            const newQuotesArray = [];
+          
+            for (const quoteObject of filteredAuthorsAndQuote) {
+              const normalizedAuthor = quoteObject.author.toLowerCase();
+              const normalizedQuote = quoteObject.quote.toLowerCase();
+          
+              if (
+                normalizedAuthor.includes(author.toLowerCase()) &&
+                normalizedQuote.includes(quote.toLowerCase())
+              ) {
+                newQuotesArray.push(quoteObject);
+              }
+            }
+          
+            return newQuotesArray;
+          }
+          
+        
+        if (!author && !quote) { 
+            const allQuotes = await this.quoteModel
+                                .find()
+                                .exec()
+            return allQuotes
+        }
     }
 
     async findAndUpdate(id:string, body: CreateQuoteDto) {
         const updatedQuote = await this.quoteModel.findByIdAndUpdate(id, body).exec();
         return updatedQuote
-    }
-
-    async searchByKeyword(keyword: string){
-        const quoteSearch = await this.quoteModel
-          .find({ quote: { $regex: new RegExp(keyword, 'i') } })
-          .exec();
-          
-          if (!quoteSearch[keyword]) {
-            throw new NotFoundException(`Could not find quotes with keyword ${keyword}.`)
-        }
-          return quoteSearch
-      }
-
-    async searchByAuthor(author: string){
-    const authorSearch = await this.quoteModel
-        .find({ author: { $regex: new RegExp(author, 'i') } })
-        .exec();
-
-        if (!authorSearch[author]) {
-            throw new NotFoundException(`Could not find author ${author}.`)
-        }
-
-        return authorSearch
     }
 
     // TODO: Add Auth, add Users, add abilty to favorite quotes

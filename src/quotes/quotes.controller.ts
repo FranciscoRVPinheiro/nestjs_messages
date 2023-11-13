@@ -1,7 +1,6 @@
-import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put, Query } from '@nestjs/common';
 import { CreateQuoteDto } from "./dtos/create-quote.dto"
 import { QuotesService } from './quotes.service'
-import { ApiOkResponse, ApiBadRequestResponse } from '@nestjs/swagger';
 
 @Controller('quotes')
 export class QuotesController {
@@ -11,11 +10,9 @@ export class QuotesController {
     ) {}
 
     @Get()
-    @ApiOkResponse({
-        description: 'Gets all quotes.'
-    })
-    async lisQuotes(){
-        const quoteList = await this.quotesService.findAll() 
+    async lisQuotes(
+        @Query('quote') quote:string, @Query('author') author:string) {
+        const quoteList = await this.quotesService.findAll(quote, author) 
         return quoteList
     }
 
@@ -25,39 +22,23 @@ export class QuotesController {
         return createQuote
     }
 
-    
-    @Get(':id')
-    @ApiOkResponse({
-        description: 'Gets quote by ID.'
-    })
-    @ApiBadRequestResponse()
+    @Get('/:id')
     async getQuoteByID(@Param('id') id:string){
         const getQuote = await this.quotesService.findOne(id)
         return getQuote
     }
 
-    @Delete('delete/:id')
+    @Delete('/:id')
     async deleteQuote(@Param('id') id:string){
         const deleteQuote = await this.quotesService.delete(id)
         return deleteQuote
     }
 
-    @Put('update/:id')
+    @Put('/:id')
     async getQuoteByIdAndUpdate(@Param('id') id:string, @Body() body:CreateQuoteDto){
         const patchedQuote = await this.quotesService.findAndUpdate(id, body)
         const getPatchedQuote = await this.quotesService.findOne(id)
         return getPatchedQuote
     }
 
-    @Get('search/:keyword')
-    async searchByKeyword(@Param('keyword') keyword: string) {
-      const results = await this.quotesService.searchByKeyword(keyword);
-      return results;
-    }
-
-    @Get('author/:author')
-    async searchByAuhtor(@Param('author') author: string) {
-      const results = await this.quotesService.searchByAuthor(author);
-      return results;
-    }
 }
