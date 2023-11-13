@@ -67,4 +67,6 @@ export class QuotesService {
 
         return authorSearch
     }
+
+    // TODO: Add Auth, add Users, add abilty to favorite quotes
 }
