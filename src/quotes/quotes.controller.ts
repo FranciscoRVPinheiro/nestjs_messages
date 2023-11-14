@@ -11,7 +11,8 @@ export class QuotesController {
 
     @Get()
     async lisQuotes(
-        @Query('quote') quote:string, @Query('author') author:string) {
+        @Query('quote') quote:string, 
+        @Query('author') author:string) {
         const quoteList = await this.quotesService.findAll(quote, author) 
         return quoteList
     }
