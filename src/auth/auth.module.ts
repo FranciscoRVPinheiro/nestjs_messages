@@ -7,10 +7,10 @@ import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      isGlobal: true
-    }),
-    MongooseModule.forRoot(process.env.MONGO),
+    // ConfigModule.forRoot({
+    //   isGlobal: true
+    // }),
+    // MongooseModule.forRoot(process.env.MONGO),
     MongooseModule.forFeature([{
       name: 'Auth', schema: AuthSchema,
     }]),
