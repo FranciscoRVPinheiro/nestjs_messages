@@ -10,8 +10,9 @@ export class UsersService {
         @InjectModel('Users') private readonly usersModel: Model<UsersDto>,
     ) {}
 
-    private async hashPassword(password: string): Promise<string> {
-        const salt = await bcrypt.genSalt(10)
+    async hashPassword(password: string): Promise<string> {
+
+        const salt = process.env.SALT
 
         const passwordToBeHashed = password
 
@@ -20,7 +21,7 @@ export class UsersService {
         return hash
     }
 
-    private async checkIfUserExists(username:string): Promise<UsersDto>{
+    async checkIfUserExists(username:string): Promise<UsersDto>{
         const findUser = await this.usersModel
                     .findOne({ 
                         username: { $regex: new RegExp(username, 'i') } 
