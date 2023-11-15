@@ -2,7 +2,6 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateQuoteDto } from "./dtos/create-quote.dto"
-import { audit } from 'rxjs';
 
 @Injectable()
 export class QuotesService {
@@ -29,11 +28,6 @@ export class QuotesService {
     async findOne(id: string) {
         try {
             const quote = await this.quoteModel.findById(id).exec();
-
-            if (!quote){
-                throw new NotFoundException(`Quote id ${id} not found`)
-            }
-    
             return quote
             
         }catch (err) {
