@@ -1,7 +1,9 @@
 import { Controller, Get, Post, Body, Param, Delete, Put, Query } from '@nestjs/common';
 import { CreateQuoteDto } from "./dtos/create-quote.dto"
 import { QuotesService } from './quotes.service'
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Quotes')
 @Controller('quotes')
 export class QuotesController {
 
@@ -40,6 +42,7 @@ export class QuotesController {
         const patchedQuote = await this.quotesService.findAndUpdate(id, body)
         const getPatchedQuote = await this.quotesService.findOne(id)
         return getPatchedQuote
+        //TODO: if ID does not exist, return appropriate exception
     }
 
 }
