@@ -40,6 +40,7 @@ export class QuotesController {
         const patchedQuote = await this.quotesService.findAndUpdate(id, body)
         const getPatchedQuote = await this.quotesService.findOne(id)
         return getPatchedQuote
+        //TODO: if ID does not exist, return appropriate exception
     }
 
 }
