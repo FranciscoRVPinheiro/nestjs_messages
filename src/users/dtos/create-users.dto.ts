@@ -13,5 +13,7 @@ export class UsersDto {
     @ApiProperty()
     @Length(6, 30)
     password: string;
+
+    likedQuotes: string[]    
     // TODO: add checks for size of strings and regex validation rules
 }
