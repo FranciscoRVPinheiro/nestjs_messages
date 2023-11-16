@@ -5,7 +5,6 @@ import { AuthDto } from './dtos/auth.dto'
 import * as bcrypt from 'bcrypt';
 import { UsersDto } from 'src/users/dtos/create-users.dto';
 
-
 @Injectable()
 export class AuthService {
     constructor(
@@ -13,7 +12,7 @@ export class AuthService {
         @InjectModel('Users') private readonly usersModel: Model<UsersDto>,
     ) {}
 
-    async hashPassword(password: string): Promise<string> {
+    async hashPassword(password: string){
         const salt = process.env.SALT
         const passwordToBeHashed = password
 
@@ -22,7 +21,7 @@ export class AuthService {
         return hash
     }
 
-    async checkIfUserExists(username:string): Promise<UsersDto>{
+    async checkIfUserExists(username:string){
         const findUser = await this.usersModel
                     .findOne({ 
                         username: { $regex: new RegExp(username, 'i') } 
@@ -32,7 +31,7 @@ export class AuthService {
         return findUser  
     }
 
-    async signin(signinDto: UsersDto) {
+    async signin(signinDto: AuthDto) {
 
         const hashedPassword = await this.hashPassword(signinDto.password)
 
@@ -46,6 +45,10 @@ export class AuthService {
         }else {
             throw new UnauthorizedException('Username or password does not match.')
         }
+    }
+
+    async signmOut(){
+        // TODO
     }
 }
 
