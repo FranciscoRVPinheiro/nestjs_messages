@@ -31,11 +31,11 @@ export class UsersController {
     const user = await this.usersService.registerUser(usersDto);
     return user;
   }
-
+  @UseGuards(Guard)
   @Delete('/:id')
   @ApiTags('Users')
-  async deleteUser(@Param('id') id: string) {
-    const user = await this.usersService.deleteUser(id);
+  async deleteUser(@Param('id') id: string, @Request() req: any) {
+    const user = await this.usersService.deleteUser(id, req);
 
     if (user) {
       return {
@@ -43,23 +43,25 @@ export class UsersController {
       };
     }
   }
-
+  @UseGuards(Guard)
   @ApiTags('Likes')
   @Post('/:username/like/:quoteId')
   async likeQuote(
     @Param('username') username: string,
     @Param('quoteId') quoteId: string,
+    @Request() req: any,
   ) {
-    return await this.usersService.likeQuote(username, quoteId);
+    return await this.usersService.likeQuote(username, quoteId, req);
   }
-
+  @UseGuards(Guard)
   @ApiTags('Likes')
   @Post('/:username/removelike/:quoteId')
   async removeLikedQuote(
     @Param('username') username: string,
     @Param('quoteId') quoteId: string,
+    @Request() req: any,
   ) {
-    return this.usersService.removeLikedQuote(username, quoteId);
+    return this.usersService.removeLikedQuote(username, quoteId, req);
   }
 
   @UseGuards(Guard)
