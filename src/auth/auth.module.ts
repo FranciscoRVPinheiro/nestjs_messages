@@ -4,16 +4,17 @@ import { AuthService } from './auth.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersSchema } from '../users/users.model';
 import { AuthSchema } from './auth.model';
-import { PassportModule } from '@nestjs/passport';
+import { AuthGuard, PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule } from '@nestjs/config';
+import { Guard } from './auth.guard';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    PassportModule,
+    PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
       secret: process.env.JWT_SECRET_KEY,
       signOptions: { expiresIn: '6000s' },
@@ -24,6 +25,7 @@ import { ConfigModule } from '@nestjs/config';
     ]),
   ],
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [AuthService, Guard],
+  exports: [AuthService, Guard],
 })
 export class AuthModule {}

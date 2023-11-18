@@ -6,11 +6,13 @@ import {
   Param,
   Post,
   UseGuards,
+  Request,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UsersDto } from './dtos/create-users.dto';
 import { ApiTags } from '@nestjs/swagger';
-import { RolesGuard } from 'src/auth/roles.guard';
+import { AuthGuard } from '@nestjs/passport';
+import { Guard } from 'src/auth/auth.guard';
 
 @Controller('users')
 export class UsersController {
@@ -60,9 +62,10 @@ export class UsersController {
     return this.usersService.removeLikedQuote(username, quoteId);
   }
 
+  @UseGuards(Guard)
   @ApiTags('Likes')
   @Get('/:username/likes')
-  async listLikes(@Param('username') username: string) {
-    return await this.usersService.listLikedQuotes(username);
+  async listLikes(@Param('username') username: string, @Request() req: any) {
+    return await this.usersService.listLikedQuotes(username, req);
   }
 }

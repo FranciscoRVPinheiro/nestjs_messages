@@ -8,7 +8,7 @@ import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class Guard implements CanActivate {
   constructor(private jwtService: JwtService) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
@@ -24,10 +24,11 @@ export class AuthGuard implements CanActivate {
       // 💡 We're assigning the payload to the request object here
       // so that we can access it in our route handlers
       request['user'] = payload;
+      return true;
     } catch {
       throw new UnauthorizedException();
     }
-    return true;
+    // return true;
   }
 
   private extractTokenFromHeader(request: Request): string | undefined {

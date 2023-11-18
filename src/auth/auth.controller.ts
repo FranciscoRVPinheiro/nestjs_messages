@@ -9,7 +9,7 @@ import {
 import { AuthService } from './auth.service';
 import { AuthDto } from './dtos/auth.dto';
 import { ApiTags } from '@nestjs/swagger';
-import { AuthGuard } from './auth.guard';
+import { Guard } from './auth.guard';
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -27,7 +27,7 @@ export class AuthController {
     return auth;
   }
 
-  @UseGuards(AuthGuard)
+  @UseGuards(Guard)
   @Get('profile')
   getProfile(@Request() req) {
     return req.user;

@@ -2,6 +2,7 @@ import {
   ConflictException,
   Injectable,
   NotFoundException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -97,14 +98,24 @@ export class UsersService {
       .exec();
   }
 
-  async listLikedQuotes(username: string) {
+  async listLikedQuotes(username: string, req: any) {
     const user = await this.usersModel.findOne({ username }).exec();
 
     if (!user) {
-      return [];
+      throw new NotFoundException();
+    }
+
+    const tokenInfo = req.user;
+
+    if (tokenInfo.username !== user.username) {
+      throw new UnauthorizedException();
     }
 
     const quotesArray = [];
+
+    if (!req.user) {
+      throw new UnauthorizedException();
+    }
 
     for (const quoteId of user.likedQuotes) {
       const quote = await this.quoteModel.findById(quoteId).exec();
@@ -116,6 +127,7 @@ export class UsersService {
         });
       }
     }
+
     return quotesArray;
   }
 }
