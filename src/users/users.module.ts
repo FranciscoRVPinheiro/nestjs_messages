@@ -4,6 +4,8 @@ import { UsersService } from './users.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersSchema } from './users.model';
 import { QuotesSchema } from 'src/quotes/quotes.model';
+import { Guard } from 'src/auth/auth.guard';
+import { JwtService } from '@nestjs/jwt';
 @Module({
   imports: [
     MongooseModule.forFeature([
@@ -12,6 +14,6 @@ import { QuotesSchema } from 'src/quotes/quotes.model';
     ]),
   ],
   controllers: [UsersController],
-  providers: [UsersService],
+  providers: [UsersService, Guard, JwtService],
 })
 export class UsersModule {}

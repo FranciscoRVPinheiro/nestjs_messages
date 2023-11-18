@@ -2,6 +2,7 @@ import {
   ConflictException,
   Injectable,
   NotFoundException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -62,21 +63,37 @@ export class UsersService {
     }
   }
 
-  async deleteUser(id: string) {
+  async deleteUser(id: string, req: any) {
+    const tokenInfo = req.user;
+
+    if (!tokenInfo || tokenInfo.sub !== id) {
+      throw new UnauthorizedException();
+    }
+
     const user = await this.usersModel.deleteOne({ _id: id }).exec();
 
     if (user.deletedCount === 0) {
-      throw new NotFoundException(`Quote id ${id} not found.`);
+      throw new NotFoundException(`User id ${id} not found.`);
     }
 
-    return user.acknowledged;
+    return user;
   }
 
-  async likeQuote(username: string, quoteId: string) {
+  async likeQuote(username: string, quoteId: string, req: any) {
     const user = await this.usersModel.findOne({ username }).exec();
 
     if (!user) {
       throw new NotFoundException('User not found.');
+    }
+
+    const tokenInfo = req.user;
+
+    if (!tokenInfo) {
+      throw new UnauthorizedException();
+    }
+
+    if (tokenInfo.username !== username) {
+      throw new UnauthorizedException();
     }
 
     if (!user.likedQuotes.includes(quoteId)) {
@@ -87,24 +104,46 @@ export class UsersService {
     return user;
   }
 
-  async removeLikedQuote(username: string, quoteId: string) {
-    return await this.usersModel
+  async removeLikedQuote(username: string, quoteId: string, req: any) {
+    const findUser = await this.usersModel
       .findOneAndUpdate(
         { username: username },
         { $pull: { likedQuotes: quoteId } },
         { new: true },
       )
       .exec();
+
+    const tokenInfo = req.user;
+
+    if (!tokenInfo) {
+      throw new UnauthorizedException();
+    }
+
+    if (tokenInfo.username !== username) {
+      throw new UnauthorizedException();
+    }
+
+    return findUser;
   }
 
-  async listLikedQuotes(username: string) {
+  async listLikedQuotes(username: string, req: any) {
     const user = await this.usersModel.findOne({ username }).exec();
 
     if (!user) {
-      return [];
+      throw new NotFoundException();
+    }
+
+    const tokenInfo = req.user;
+
+    if (tokenInfo.username !== user.username) {
+      throw new UnauthorizedException();
     }
 
     const quotesArray = [];
+
+    if (!req.user) {
+      throw new UnauthorizedException();
+    }
 
     for (const quoteId of user.likedQuotes) {
       const quote = await this.quoteModel.findById(quoteId).exec();
@@ -116,6 +155,7 @@ export class UsersService {
         });
       }
     }
+
     return quotesArray;
   }
 }
