@@ -1,53 +1,422 @@
 [
-    {"quote": "No man was ever wise by chance", "author": "Seneca"},
-    {"quote": "The Obstacle is the way.", "author": "Ryan Holiday"},
-    {"quote": "Your mind is truly yours.", "author": "Marcus Aurelius"},
-    {"quote": "Think progress, not perfection.", "author": "Ryan Holiday"},
-    {"quote": "Our life is what our thoughts make it.", "author": "Marcus Aurelius"},
-    {"quote": "It is impossible for a man to learn what he thinks he already knows.", "author": "Epictetus"},
-    {"quote": "We all love ourselves more than other people, but care more about their opinion than our own.", "author": "Marcus Aurelius"},
-    {"quote": "You shouldn't give circumstances the power to rouse anger, for they don't care at all.", "author": "Marcus Aurelius"},
-    {"quote": "Your mind will take the shape of what you frequently hold in thought for the human spirit is colored by such impressions.", "author": "Marcus Aurelius"},
-    {"quote": "To live the good life: We have the potential for it. If we can learn to be indifferent to what makes no difference.", "author": "Marcus Aurelius"},
-    {"quote": "We have two ears and one mouth so that we can listen twice as much as we speak.", "author": "Epictetus"},
-    {"quote": "It is the power of the mind to be unconquerable.", "author": "Seneca"},
-    {"quote": "Sometimes even to live is an act of courage.", "author": "Seneca"},
-    {"quote": "Luck is what happens when preparation meets opportunity.", "author": "Seneca"},
-    {"quote": "Difficulties strengthen the mind, as labor does the body.", "author": "Seneca"},
-    {"quote": "There is no easy way from the earth to the stars", "author": "eneca"},
-    {"quote": "Hang on to your youthful enthusiasms -- you’ll be able to use them better when you’re older.", "author": "Seneca"},
-    {"quote": "Begin at once to live, and count each separate day as a separate life.", "author": "Seneca"},
-    {"quote": "We suffer more often in imagination than in reality", "author": "Seneca"},
-    {"quote": "Most powerful is he who has himself in his own power.", "author": "Seneca"},
-    {"quote": "As long as you live, keep learning how to live.", "author": "Seneca"},
-    {"quote": "It is difficult to bring people to goodness with lessons, but it is easy to do so by example.", "author": "Seneca"},
-    {"quote": "We must give up things to which we are addicted considering them to be good. Otherwise courage will vanish which should test itsef.", "author": "Seneca"},
-    {"quote": "Your principles can't be extinguished unless you snuff out the thoughts that feed them.", "author": "Marcus Aurelius"},
-    {"quote": "It's possible to start living again! See things anew as you once did. That is how to restart life!", "author": "Marcus Aurelius"},
-    {"quote": "A real man doesn't give way to anger & discontent & such a person has strength, courage & endurance unlike the angry and complaining.", "author": "Marcus Aurelius"},
-    {"quote": "Who then is invincible? The one who cannot be upset by anything outside their reasoned choice.", "author": "Epictetus"},
-    {"quote": "For to be wise is only one thing- to fix our attention on our intelligence which guides all things everywhere.", "author": "Heraclitus"},
-    {"quote": "You shouldn't give circumstances the power to rouse anger, for they don't care at all.", "author": "Marcus Aurelius"},
-    {"quote": "Your mind will take the shape of what you frequently hold in thought.", "author": "Marcus Aurelius"},
-    {"quote": "First tell yourself what kind of perosn you want to be, then do what you have to do.", "author": "Marcus Aurelius"},
-    {"quote": "If you want some good, get it from yourself.", "author": "Epictetus"},
-    {"quote": "Where is Good? In our reasoned choices. Where is evil? In our reasoned choices. Where is neither of them? Outside our reasoned choices.", "author": "Epictetus"},
-    {"quote": "Let us also produce some blod act of our own & join the ranks of most emulated.", "author": "Seneca"},
-    {"quote": "Kindness is invincible, but only when it's sincere with no hypocrisy or faking.", "author": "Marcus Aurelius"},
-    {"quote": "How much credence we give to the opinions our peers have of us and how little to our very own.", "author": "Marcus Aurelius"},
-    {"quote": "What is your vocation? To be a good person.", "author": "Marus Aurelius"},
-    {"quote": "Much more harmful are the consequences of anger and grief than the circumstances that aroused them in us!", "author": "Marcus Aurelius"},
-    {"quote": "The reason why we have two ears and only one mouth is so we might listen more and talk less.", "author": "Diogenes Laertius"},
-    {"quote": "The obstacle on the path becomes the way.", "author": "Marcus Aurelius"},
-    {"quote": "In your actions, don't procrastinate. In your conversations, don't confuse. In your thoughts don't be passive or aggressive.", "author": "Marcus Aurelius"},
-    {"quote": "Silence is the lesson learned from the many sufferings of life.", "author": "Seneca"},
-    {"quote": "But there is no reason to live and no limit to our miseries if we let our fears predominate.", "author": "Seneca"},
-    {"quote": "Whenever you suffer pain keep in mind that it's nothing to be ashamed of and that it can't degrade your intelligence nor keep it from acting raitonally.", "author": "Marcus Aurelius"},
-    {"quote": "Dig deep within yourself, for there is a foundation of goodness every ready to flow if you will keep digging.", "author": "Marcus Aurelius"},
-    {"quote": "This universe is change. Life is opinion.", "author": "Marcus Aurelius"},
-    {"quote": "The greater danger for most of us is not that our aim is high and we miss it, but it is low and we hit it.", "author": "Aristotle"},
-    {"quote": "When you're onto something great, it won't feel like revolution. It'll feel like uncommon sense.", "author": "Derek Sivers"},
-    {"quote": "When you arise in the morning, think of what a precious privilege it is to be alive - to breathe, to think, to enjoy, to love.", "author": "Marcus Aurelius"},
-    {"quote": "Everything we hear is an opinion, not a fact. Everything we see is a perspective, not the truth.", "author": "Marcus Aurelius"},
-    {"quote": "The best revenge is not to be like your enemy.", "author": "Marcus Aurelius"}
-  ]
+	{
+		"_id": "654fbfbf0383c2024e5f325d",
+		"author": "Epictetus",
+		"quote": "Don’t explain your philosophy. Embody it.",
+		"__v": 0
+	},
+	{
+		"_id": "654fbfe10383c2024e5f325f",
+		"author": "Cato",
+		"quote": "I begin to speak only when I’m certain what I’ll say isn’t better left unsaid.",
+		"__v": 0
+	},
+	{
+		"_id": "654fc0170383c2024e5f3265",
+		"author": "Marcus Aurelius",
+		"quote": "Waste no more time arguing what a good man should be. Be One.",
+		"__v": 0
+	},
+	{
+		"_id": "654fc0240383c2024e5f3267",
+		"author": "Marcus Aurelius",
+		"quote": "Think of the life you have lived until now as over and, as a dead man, see what’s left as a bonus and live it according to Nature. Love the hand that fate deals you and play it as your own, for what could be more fitting?",
+		"__v": 0
+	},
+	{
+		"_id": "654fc0310383c2024e5f3269",
+		"author": "Marcus Aurelius",
+		"quote": "It never ceases to amaze me: we all love ourselves more than other people, but care more about their opinion than our own.",
+		"__v": 0
+	},
+	{
+		"_id": "654fc03e0383c2024e5f326b",
+		"author": "Marcus Aurelius",
+		"quote": "In your actions, don’t procrastinate. In your conversations, don’t confuse. In your thoughts, don’t wander. In your soul, don’t be passive or aggressive. In your life, don’t be all about business.",
+		"__v": 0
+	},
+	{
+		"_id": "654fc04b0383c2024e5f326d",
+		"author": "Marcus Aurelius",
+		"quote": "If it is not right, do not do it, if it is not true, do not say it.",
+		"__v": 0
+	},
+	{
+		"_id": "654fc0550383c2024e5f326f",
+		"author": "Marcus Aurelius",
+		"quote": "The best revenge is not to be like your enemy.",
+		"__v": 0
+	},
+	{
+		"_id": "654fc0620383c2024e5f3271",
+		"author": "Marcus Aurelius",
+		"quote": "Choose not to be harmed — and you won’t feel harmed. Don’t feel harmed — and you haven’t been.",
+		"__v": 0
+	},
+	{
+		"_id": "654fc0720383c2024e5f3273",
+		"author": "Marcus Aurelius",
+		"quote": "External things are not the problem. It’s your assessment of them. Which you can erase right now.",
+		"__v": 0
+	},
+	{
+		"_id": "654fc26ebc15a9d43e455b65",
+		"author": "Marcus Aurelius",
+		"quote": "Be tolerant with others and strict with yourself.",
+		"__v": 0
+	},
+	{
+		"_id": "6550cb91ed88998bdd2cdde1",
+		"author": "Epictetus",
+		"quote": "How long are you going to wait before you demand the best for yourself?",
+		"__v": 0
+	},
+	{
+		"_id": "6550cb92ed88998bdd2cdde3",
+		"author": "Seneca",
+		"quote": "This is our big mistake: to think we look forward to death. Most of death is already gone. Whatever time has passed is owned by death.",
+		"__v": 0
+	},
+	{
+		"_id": "6550cb93ed88998bdd2cdde5",
+		"author": "Seneca",
+		"quote": "No person has the power to have everything they want, but it is in their power not to want what they don’t have, and to cheerfully put to good use what they do have.",
+		"__v": 0
+	},
+	{
+		"_id": "6550cb96ed88998bdd2cdde9",
+		"author": "Viktor Frankl",
+		"quote": "When we are no longer able to change a situation, we are challenged to change ourselves.",
+		"__v": 0
+	},
+	{
+		"_id": "6550cb97ed88998bdd2cddeb",
+		"author": "Seneca",
+		"quote": "He who fears death will never do anything worthy of a man who is alive.",
+		"__v": 0
+	},
+	{
+		"_id": "6550cb98ed88998bdd2cdded",
+		"author": "Epictetus",
+		"quote": "Curb your desire—don’t set your heart on so many things and you will get what you need.",
+		"__v": 0
+	},
+	{
+		"_id": "6550cb99ed88998bdd2cddef",
+		"author": "Epictetus",
+		"quote": "The chief task in life is simply this: to identify and separate matters so that I can say clearly to myself which are externals not under my control, and which have to do with the choices I actually control. Where then do I look for good and evil? Not to uncontrollable externals, but within myself to the choices that are my own…",
+		"__v": 0
+	},
+	{
+		"_id": "6550cb9ced88998bdd2cddf3",
+		"author": "Viktor Frankl",
+		"quote": "What man actually needs is not a tensionless state but rather the striving and struggling for some goal worthy of him.",
+		"__v": 0
+	},
+	{
+		"_id": "6550cb9fed88998bdd2cddf9",
+		"author": "Marcus Aurelius",
+		"quote": "You could leave life right now. Let that determine what you do and say and think.",
+		"__v": 0
+	},
+	{
+		"_id": "6550cba0ed88998bdd2cddfb",
+		"author": "Seneca",
+		"quote": "We suffer more often in imagination than in reality.",
+		"__v": 0
+	},
+	{
+		"_id": "6550cba1ed88998bdd2cddfd",
+		"author": "Seneca",
+		"quote": "A man who suffers before it is necessary, suffers more than is necessary.",
+		"__v": 0
+	},
+	{
+		"_id": "6550cba4ed88998bdd2cde01",
+		"author": "Marcus Aurelius",
+		"quote": "The best answer to anger is silence.",
+		"__v": 0
+	},
+	{
+		"_id": "6550cba5ed88998bdd2cde03",
+		"author": "Seneca",
+		"quote": "While we wait for life, life passes.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d644ed88998bdd2cde2a",
+		"author": "Seneca",
+		"quote": "No man was ever wise by chance",
+		"__v": 0
+	},
+	{
+		"_id": "6550d646ed88998bdd2cde2c",
+		"author": "Ryan Holiday",
+		"quote": "The Obstacle is the way.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d647ed88998bdd2cde2e",
+		"author": "Marcus Aurelius",
+		"quote": "Your mind is truly yours.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d648ed88998bdd2cde30",
+		"author": "Ryan Holiday",
+		"quote": "Think progress, not perfection.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d649ed88998bdd2cde32",
+		"author": "Marcus Aurelius",
+		"quote": "Our life is what our thoughts make it.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d64aed88998bdd2cde34",
+		"author": "Epictetus",
+		"quote": "It is impossible for a man to learn what he thinks he already knows.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d64bed88998bdd2cde36",
+		"author": "Marcus Aurelius",
+		"quote": "We all love ourselves more than other people, but care more about their opinion than our own.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d64ded88998bdd2cde38",
+		"author": "Marcus Aurelius",
+		"quote": "You shouldn't give circumstances the power to rouse anger, for they don't care at all.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d64eed88998bdd2cde3a",
+		"author": "Marcus Aurelius",
+		"quote": "Your mind will take the shape of what you frequently hold in thought for the human spirit is colored by such impressions.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d64fed88998bdd2cde3c",
+		"author": "Marcus Aurelius",
+		"quote": "To live the good life: We have the potential for it. If we can learn to be indifferent to what makes no difference.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d650ed88998bdd2cde3e",
+		"author": "Epictetus",
+		"quote": "We have two ears and one mouth so that we can listen twice as much as we speak.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d651ed88998bdd2cde40",
+		"author": "Seneca",
+		"quote": "It is the power of the mind to be unconquerable.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d652ed88998bdd2cde42",
+		"author": "Seneca",
+		"quote": "Sometimes even to live is an act of courage.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d654ed88998bdd2cde44",
+		"author": "Seneca",
+		"quote": "Luck is what happens when preparation meets opportunity.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d655ed88998bdd2cde46",
+		"author": "Seneca",
+		"quote": "Difficulties strengthen the mind, as labor does the body.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d656ed88998bdd2cde48",
+		"author": "eneca",
+		"quote": "There is no easy way from the earth to the stars",
+		"__v": 0
+	},
+	{
+		"_id": "6550d657ed88998bdd2cde4a",
+		"author": "Seneca",
+		"quote": "Hang on to your youthful enthusiasms -- you’ll be able to use them better when you’re older.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d658ed88998bdd2cde4c",
+		"author": "Seneca",
+		"quote": "Begin at once to live, and count each separate day as a separate life.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d65bed88998bdd2cde50",
+		"author": "Seneca",
+		"quote": "Most powerful is he who has himself in his own power.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d65ced88998bdd2cde52",
+		"author": "Seneca",
+		"quote": "As long as you live, keep learning how to live.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d65ded88998bdd2cde54",
+		"author": "Seneca",
+		"quote": "It is difficult to bring people to goodness with lessons, but it is easy to do so by example.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d65eed88998bdd2cde56",
+		"author": "Seneca",
+		"quote": "We must give up things to which we are addicted considering them to be good. Otherwise courage will vanish which should test itsef.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d65fed88998bdd2cde58",
+		"author": "Marcus Aurelius",
+		"quote": "Your principles can't be extinguished unless you snuff out the thoughts that feed them.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d660ed88998bdd2cde5a",
+		"author": "Marcus Aurelius",
+		"quote": "It's possible to start living again! See things anew as you once did. That is how to restart life!",
+		"__v": 0
+	},
+	{
+		"_id": "6550d662ed88998bdd2cde5c",
+		"author": "Marcus Aurelius",
+		"quote": "A real man doesn't give way to anger & discontent & such a person has strength, courage & endurance unlike the angry and complaining.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d663ed88998bdd2cde5e",
+		"author": "Epictetus",
+		"quote": "Who then is invincible? The one who cannot be upset by anything outside their reasoned choice.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d664ed88998bdd2cde60",
+		"author": "Heraclitus",
+		"quote": "For to be wise is only one thing- to fix our attention on our intelligence which guides all things everywhere.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d665ed88998bdd2cde62",
+		"author": "Marcus Aurelius",
+		"quote": "You shouldn't give circumstances the power to rouse anger, for they don't care at all.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d666ed88998bdd2cde64",
+		"author": "Marcus Aurelius",
+		"quote": "Your mind will take the shape of what you frequently hold in thought.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d667ed88998bdd2cde66",
+		"author": "Marcus Aurelius",
+		"quote": "First tell yourself what kind of perosn you want to be, then do what you have to do.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d669ed88998bdd2cde68",
+		"author": "Epictetus",
+		"quote": "If you want some good, get it from yourself.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d66aed88998bdd2cde6a",
+		"author": "Epictetus",
+		"quote": "Where is Good? In our reasoned choices. Where is evil? In our reasoned choices. Where is neither of them? Outside our reasoned choices.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d66bed88998bdd2cde6c",
+		"author": "Seneca",
+		"quote": "Let us also produce some blod act of our own & join the ranks of most emulated.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d66ced88998bdd2cde6e",
+		"author": "Marcus Aurelius",
+		"quote": "Kindness is invincible, but only when it's sincere with no hypocrisy or faking.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d66ded88998bdd2cde70",
+		"author": "Marcus Aurelius",
+		"quote": "How much credence we give to the opinions our peers have of us and how little to our very own.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d66eed88998bdd2cde72",
+		"author": "Marus Aurelius",
+		"quote": "What is your vocation? To be a good person.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d66fed88998bdd2cde74",
+		"author": "Marcus Aurelius",
+		"quote": "Much more harmful are the consequences of anger and grief than the circumstances that aroused them in us!",
+		"__v": 0
+	},
+	{
+		"_id": "6550d671ed88998bdd2cde76",
+		"author": "Diogenes Laertius",
+		"quote": "The reason why we have two ears and only one mouth is so we might listen more and talk less.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d672ed88998bdd2cde78",
+		"author": "Marcus Aurelius",
+		"quote": "The obstacle on the path becomes the way.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d674ed88998bdd2cde7c",
+		"author": "Seneca",
+		"quote": "Silence is the lesson learned from the many sufferings of life.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d675ed88998bdd2cde7e",
+		"author": "Seneca",
+		"quote": "But there is no reason to live and no limit to our miseries if we let our fears predominate.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d676ed88998bdd2cde80",
+		"author": "Marcus Aurelius",
+		"quote": "Whenever you suffer pain keep in mind that it's nothing to be ashamed of and that it can't degrade your intelligence nor keep it from acting raitonally.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d678ed88998bdd2cde82",
+		"author": "Marcus Aurelius",
+		"quote": "Dig deep within yourself, for there is a foundation of goodness every ready to flow if you will keep digging.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d679ed88998bdd2cde84",
+		"author": "Marcus Aurelius",
+		"quote": "This universe is change. Life is opinion.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d67ced88998bdd2cde8a",
+		"author": "Marcus Aurelius",
+		"quote": "When you arise in the morning, think of what a precious privilege it is to be alive - to breathe, to think, to enjoy, to love.",
+		"__v": 0
+	},
+	{
+		"_id": "6550d67ded88998bdd2cde8c",
+		"author": "Marcus Aurelius",
+		"quote": "Everything we hear is an opinion, not a fact. Everything we see is a perspective, not the truth.",
+		"__v": 0
+	}
+]
