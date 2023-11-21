@@ -38,7 +38,10 @@ export class UsersService {
   }
 
   async listAllUsers() {
-    const allQuotes = await this.usersModel.find().exec();
+    const allQuotes = await this.usersModel
+      .find()
+      .select('-password -__v')
+      .exec();
     return allQuotes;
   }
 
@@ -126,24 +129,14 @@ export class UsersService {
     return findUser;
   }
 
-  async listLikedQuotes(username: string, req: any) {
+  async listLikedQuotes(username: string) {
     const user = await this.usersModel.findOne({ username }).exec();
 
     if (!user) {
       throw new NotFoundException();
     }
 
-    const tokenInfo = req.user;
-
-    if (tokenInfo.username !== user.username) {
-      throw new UnauthorizedException();
-    }
-
     const quotesArray = [];
-
-    if (!req.user) {
-      throw new UnauthorizedException();
-    }
 
     for (const quoteId of user.likedQuotes) {
       const quote = await this.quoteModel.findById(quoteId).exec();

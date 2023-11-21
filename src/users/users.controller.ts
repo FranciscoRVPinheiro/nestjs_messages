@@ -64,10 +64,9 @@ export class UsersController {
     return this.usersService.removeLikedQuote(username, quoteId, req);
   }
 
-  @UseGuards(Guard)
   @ApiTags('Likes')
   @Get('/:username/likes')
-  async listLikes(@Param('username') username: string, @Request() req: any) {
-    return await this.usersService.listLikedQuotes(username, req);
+  async listLikes(@Param('username') username: string) {
+    return await this.usersService.listLikedQuotes(username);
   }
 }
