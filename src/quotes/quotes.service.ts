@@ -100,10 +100,25 @@ export class QuotesService {
     return allQuotes;
   }
 
-  async findAndUpdate(id: string, body: CreateQuoteDto) {
-    const updatedQuote = await this.quoteModel
-      .findByIdAndUpdate(id, body)
-      .exec();
-    return updatedQuote;
+  async findAndUpdate(id: string, body: CreateQuoteDto, req: any) {
+    const tokenInfo = req.user;
+
+    if (!tokenInfo) {
+      throw new UnauthorizedException();
+    }
+
+    try {
+      const user = await this.usersModel.findById(tokenInfo.sub).exec();
+      if (!user.isAdmin) {
+        throw new UnauthorizedException();
+      }
+
+      const updatedQuote = await this.quoteModel
+        .findByIdAndUpdate(id, body)
+        .exec();
+      return updatedQuote;
+    } catch (err) {
+      throw new NotFoundException();
+    }
   }
 }

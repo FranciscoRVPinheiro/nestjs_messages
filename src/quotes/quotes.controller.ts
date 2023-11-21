@@ -46,15 +46,15 @@ export class QuotesController {
     const deleteQuote = await this.quotesService.delete(id, req);
     return deleteQuote;
   }
-
+  @UseGuards(Guard)
   @Put('/:id')
   async getQuoteByIdAndUpdate(
     @Param('id') id: string,
     @Body() body: CreateQuoteDto,
+    @Request() req: any,
   ) {
-    const patchedQuote = await this.quotesService.findAndUpdate(id, body);
+    await this.quotesService.findAndUpdate(id, body, req);
     const getPatchedQuote = await this.quotesService.findOne(id);
     return getPatchedQuote;
-    //TODO: if ID does not exist, return appropriate exception
   }
 }
