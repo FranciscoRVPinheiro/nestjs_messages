@@ -46,6 +46,10 @@ export class UsersService {
   }
 
   async registerUser(createUserDto: UsersDto) {
+    if (createUserDto.isAdmin === true) {
+      throw new UnauthorizedException('Operation not allowed.');
+    }
+
     const userSearch = await this.checkIfUserExists(createUserDto.username);
 
     if (userSearch === null) {

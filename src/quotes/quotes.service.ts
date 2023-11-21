@@ -54,7 +54,7 @@ export class QuotesService {
 
   async findOne(id: string) {
     try {
-      const quote = await this.quoteModel.findById(id).exec();
+      const quote = await this.quoteModel.findById(id).select('-__v').exec();
       return quote;
     } catch (err) {
       throw new NotFoundException(`Quote id ${id} not found`);
@@ -65,6 +65,7 @@ export class QuotesService {
     if (quote && !author) {
       const filteredQuotes = await this.quoteModel
         .find({ quote: { $regex: new RegExp(quote, 'i') } })
+        .select('-__v')
         .exec();
       return filteredQuotes;
     }
@@ -72,12 +73,16 @@ export class QuotesService {
     if (author && !quote) {
       const filteredAuthors = await this.quoteModel
         .find({ author: { $regex: new RegExp(author, 'i') } })
+        .select('-__v')
         .exec();
       return filteredAuthors;
     }
 
     if (author && quote) {
-      const filteredAuthorsAndQuote = await this.quoteModel.find().exec();
+      const filteredAuthorsAndQuote = await this.quoteModel
+        .find()
+        .select('-__v')
+        .exec();
 
       const newQuotesArray = [];
 
@@ -96,7 +101,7 @@ export class QuotesService {
       return newQuotesArray;
     }
 
-    const allQuotes = await this.quoteModel.find().exec();
+    const allQuotes = await this.quoteModel.find().select('-__v').exec();
     return allQuotes;
   }
 

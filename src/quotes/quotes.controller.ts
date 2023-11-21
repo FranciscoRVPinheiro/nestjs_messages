@@ -12,7 +12,7 @@ import {
 } from '@nestjs/common';
 import { CreateQuoteDto } from './dtos/create-quote.dto';
 import { QuotesService } from './quotes.service';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiQuery, ApiTags } from '@nestjs/swagger';
 import { Guard } from 'src/auth/auth.guard';
 
 @ApiTags('Quotes')
@@ -20,12 +20,24 @@ import { Guard } from 'src/auth/auth.guard';
 export class QuotesController {
   constructor(private quotesService: QuotesService) {}
 
+  @ApiQuery({
+    name: 'author',
+    type: String,
+    description: 'Optional',
+    required: false,
+  })
+  @ApiQuery({
+    name: 'quote',
+    type: String,
+    description: 'Optional',
+    required: false,
+  })
   @Get()
-  async lisQuotes(
-    @Query('quote') quote?: string,
-    @Query('author') author?: string,
-  ) {
-    const quoteList = await this.quotesService.findAll(quote, author);
+  async lisQuotes(@Query() query: { author?: string; quote?: string }) {
+    const quoteList = await this.quotesService.findAll(
+      query.quote,
+      query.author,
+    );
     return quoteList;
   }
   @UseGuards(Guard)
