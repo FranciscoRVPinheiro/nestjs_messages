@@ -10,8 +10,7 @@ import {
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UsersDto } from './dtos/create-users.dto';
-import { ApiTags } from '@nestjs/swagger';
-import { AuthGuard } from '@nestjs/passport';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Guard } from 'src/auth/auth.guard';
 
 @Controller('users')
@@ -31,6 +30,8 @@ export class UsersController {
     const user = await this.usersService.registerUser(usersDto);
     return user;
   }
+
+  @ApiBearerAuth()
   @UseGuards(Guard)
   @Delete('/:id')
   @ApiTags('Users')
@@ -43,6 +44,8 @@ export class UsersController {
       };
     }
   }
+
+  @ApiBearerAuth()
   @UseGuards(Guard)
   @ApiTags('Likes')
   @Post('/:username/like/:quoteId')
@@ -53,6 +56,8 @@ export class UsersController {
   ) {
     return await this.usersService.likeQuote(username, quoteId, req);
   }
+
+  @ApiBearerAuth()
   @UseGuards(Guard)
   @ApiTags('Likes')
   @Post('/:username/removelike/:quoteId')

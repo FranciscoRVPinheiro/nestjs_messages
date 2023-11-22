@@ -12,7 +12,7 @@ import {
 } from '@nestjs/common';
 import { CreateQuoteDto } from './dtos/create-quote.dto';
 import { QuotesService } from './quotes.service';
-import { ApiQuery, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { Guard } from 'src/auth/auth.guard';
 
 @ApiTags('Quotes')
@@ -40,6 +40,8 @@ export class QuotesController {
     );
     return quoteList;
   }
+
+  @ApiBearerAuth()
   @UseGuards(Guard)
   @Post()
   async createQuote(@Body() body: CreateQuoteDto, @Request() req: any) {
@@ -52,12 +54,16 @@ export class QuotesController {
     const getQuote = await this.quotesService.findOne(id);
     return getQuote;
   }
+
+  @ApiBearerAuth()
   @UseGuards(Guard)
   @Delete('/:id')
   async deleteQuote(@Param('id') id: string, @Request() req: any) {
     const deleteQuote = await this.quotesService.delete(id, req);
     return deleteQuote;
   }
+
+  @ApiBearerAuth()
   @UseGuards(Guard)
   @Put('/:id')
   async getQuoteByIdAndUpdate(
