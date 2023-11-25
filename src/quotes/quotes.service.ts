@@ -61,6 +61,16 @@ export class QuotesService {
     }
   }
 
+  async findRandom() {
+    const totalDocuments = await this.quoteModel.countDocuments();
+    const randomIndex = Math.floor(Math.random() * totalDocuments);
+    const randomQuote = await this.quoteModel
+      .findOne()
+      .select('-__v')
+      .skip(randomIndex);
+    return randomQuote;
+  }
+
   async findAll(quote?: string, author?: string) {
     if (quote && !author) {
       const filteredQuotes = await this.quoteModel

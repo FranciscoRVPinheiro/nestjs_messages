@@ -75,4 +75,9 @@ export class QuotesController {
     const getPatchedQuote = await this.quotesService.findOne(id);
     return getPatchedQuote;
   }
+
+  @Get('random/quote')
+  async findRandomQuote() {
+    return await this.quotesService.findRandom();
+  }
 }
